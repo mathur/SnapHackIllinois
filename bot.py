@@ -1,17 +1,22 @@
-from argparse import ArgumentParser
 from snap.snapchat_bots import SnapchatBot
 
+class HackIllinoisBot(SnapchatBot):
 
-class StorifierBot(SnapchatBot):
-    def on_snap(self, sender, snap):
-        self.post_story(snap)
+  def initialize(self):
+    """initialize the bot by creating a queue of received snaps"""
+    self.queue = self.get_snaps(mark_viewed=False)
 
-if __name__ == '__main__':
-    parser = ArgumentParser("Storifier Bot")
-    parser.add_argument('-u', '--username', required=True, type=str, help="Username of the account to run the bot on")
-    parser.add_argument('-p', '--password', required=True, type=str, help="Password of the account to run the bot on")
+  def on_snap(self, sender, snap):
+    """Add snap to review queue when received"""
+    self.queue.append(snap)
+    #self.post_story(snap)
 
-    args = parser.parse_args()
+  def on_friend_add(self, friend):
+    """Add friends back automatically"""
+    self.add_friend(self, friend)
+    print friend
 
-    bot = StorifierBot(args.username, args.password)
-    bot.listen()
+  def get_num_friends(self):
+    """Return the number of friends the bot has"""
+    return len(self.get_friends())
+
