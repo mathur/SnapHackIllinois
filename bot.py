@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-from snapchat_bots import SnapchatBot
+from snap.snapchat_bots import SnapchatBot
 
 
 class StorifierBot(SnapchatBot):
