@@ -4,7 +4,14 @@ Flask-Login==0.2.11
 Flask-WTF==0.11
 Jinja2==2.7.3
 MarkupSafe==0.23
+Pillow==2.7.0
 WTForms==2.0.2
 Werkzeug==0.10.1
 itsdangerous==0.24
+pycrypto==2.6.1
+pysnap==0.1.1
+pyzmq==14.5.0
+requests==2.5.3
+schedule==0.3.1
+snaphackillinois==0.1
 wsgiref==0.1.2
